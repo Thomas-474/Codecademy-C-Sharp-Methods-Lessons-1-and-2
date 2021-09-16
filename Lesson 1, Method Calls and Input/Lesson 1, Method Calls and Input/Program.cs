@@ -15,96 +15,178 @@ namespace Lesson_1__Method_Calls_and_Input
         
         static void Main(string[] args)
         {
-            Console.WriteLine("Call a Method:");
+            Console.WriteLine("     Call a Method:");
             CallAMethod();
             NL();
 
-            Console.WriteLine("Capture Output:");
+            Console.WriteLine("     Capture Output:");
             CaptureOutput();
             NL();
 
-            Console.WriteLine("Define a Method:");
-            //();
+            Console.WriteLine("     Define a Method:");
+            DefineAMethod();
             NL();
 
-            Console.WriteLine("Define Parameters:");
-            //();
+            Console.WriteLine("     Define Parameters:");
+            DefineParameters();
             NL();
 
-            Console.WriteLine("A Note on Parameters:");
-            //();
+            Console.WriteLine("     Optional Parameters:");
+            OptionalParameters();
             NL();
 
-            Console.WriteLine("Optional Parameters:");
-            //();
+            Console.WriteLine("     Named Arguments:");
+            NamedArguments();
             NL();
 
-            Console.WriteLine("Named Arguments:");
-            //();
+            Console.WriteLine("     Method Overloading:");
+            MethodOverloading();
             NL();
 
-            Console.WriteLine("Method Overloading:");
-            //();
-            NL();
-
-            Console.WriteLine("Review:");
-            //();
+            Console.WriteLine("     Review:");
+            Review();
             NL();
 
             Console.ReadKey();
         }
 
-        static void CallAMethod()
-        {
-            int number = Math.Min(3, 7);
-            Console.WriteLine(number);
-            string msg = "Yabba dabba doo!";
-            Console.WriteLine(msg);
-            Console.WriteLine(msg.Substring(0, 1));
-        }
+        #region Call A Method
+            static void CallAMethod()
+            {
+                int number = Math.Min(3, 7);
+                Console.WriteLine(number);
+                string msg = "Yabba dabba doo!";
+                Console.WriteLine(msg);
+                Console.WriteLine(msg.Substring(0, 1));
+            }
+        #endregion
 
-        static void CaptureOutput()
-        {
-            string designer = "Anders Hejlsberg";
-            int indexOfSpace = designer.IndexOf(" ");
-            string secondName = designer.Substring(indexOfSpace);
-            Console.WriteLine(secondName);
-        }
+        #region Capture Output
+            static void CaptureOutput()
+            {
+                string designer = "Anders Hejlsberg";
+                int indexOfSpace = designer.IndexOf(" ");
+                string secondName = designer.Substring(indexOfSpace);
+                Console.WriteLine(secondName);
+            }
+        #endregion
 
-        static void DefineAMethod()
-        {
+        #region Define A Method
+            static void DefineAMethod()
+            {
+                VisitPlanets();
+            }
 
-        }
+            static void VisitPlanets()
+            {
+                Console.WriteLine("You visited many new planets...");
+            }
+        #endregion
 
-        static void DefineParameters()
-        {
+        #region Define Parameters
+            static void DefineParameters()
+            {
+                VisitPlanets(3);
+                VisitPlanets(4);
+                VisitPlanets(5);
+            }
 
-        }
+            static void VisitPlanets(int numberOfPlanets)
+            {
+                Console.WriteLine($"You visited {numberOfPlanets} new planets...");
+            }
+        #endregion
 
-        static void ANoteOnParameters()
-        {
+        #region Optional Parameters
+            static void OptionalParameters()
+            {
+                VisitPlanets2(3);
+                VisitPlanets2(4);
+                VisitPlanets2(5);
+                VisitPlanets2();
+            }
 
-        }
+            static void VisitPlanets2(int numberOfPlanets = 0)
+            {
+                Console.WriteLine($"You visited {numberOfPlanets} new planets...");
+            }
+        #endregion
 
-        static void OptionalParameters()
-        {
+        #region Named Arguments
+            static void NamedArguments()
+            {
+                VisitPlanets3(numberOfPlanets: 2, name: "Thomas");
+            }
 
-        }
+            static void VisitPlanets3(
+            string adjective = "brave",
+            string name = "Cosmonaut", 
+            int numberOfPlanets = 0,
+            double gForce = 4.2)
+            {
+                Console.WriteLine($"Welcome back, {adjective} {name}.");
+                Console.WriteLine($"You visited {numberOfPlanets} new planets...");
+                Console.WriteLine($"...while experiencing a g-force of {gForce} g!");
+            }
+        #endregion
 
-        static void NamedArguments()
-        {
+        #region Method Overloading
+            static void MethodOverloading()
+            {
+                NamePets("Laika", "Albert");
+                NamePets("Mango", "Puddy", "Bucket");
+                NamePets();
+            }
 
-        }
+            static void NamePets(string pet1, string pet2)
+            {
+                Console.WriteLine($"Your pets {pet1} and {pet2} will be joining your voyage across space!");
+            }  
 
-        static void MethodOverloading()
-        {
+            static void NamePets(string pet1, string pet2, string pet3)
+            {
+                Console.WriteLine($"Your pets {pet1}, {pet2}, and {pet3} will be joining your voyage across space!");
+            }  
 
-        }
+            static void NamePets()
+            {
+                Console.WriteLine("Aw, you have no spacefaring pets :(");
+            }
+        #endregion
 
-        static void Review()
-        {
+        #region Review
+            static void Review()
+            {
+                NamePets2("Laika", "Albert");
+                VisitPlanets4(numberOfPlanets: 8);
+            }
 
-        }
+            static void NamePets2()
+            {
+                Console.WriteLine("Aw, you have no spacefaring pets :(");
+            }
+
+            static void NamePets2(string pet1, string pet2)
+            {
+                Console.WriteLine($"Your pets {pet1} and {pet2} will be joining your voyage across space!");
+            }  
+
+            static void NamePets2(string pet1, string pet2, string pet3)
+            {
+                Console.WriteLine($"Your pets {pet1}, {pet2}, and {pet3} will be joining your voyage across space!");
+            }  
+
+            static void VisitPlanets4(
+            string adjective = "brave",
+            string name = "Cosmonaut", 
+            int numberOfPlanets = 0,
+            double gForce = 4.2)
+            {
+                Console.WriteLine($"Welcome back, {adjective} {name}.");
+                Console.WriteLine($"You visited {numberOfPlanets} new planets...");
+                Console.WriteLine($"...while experiencing a g-force of {gForce} g!");
+            }
+        #endregion
 
     }
 }
